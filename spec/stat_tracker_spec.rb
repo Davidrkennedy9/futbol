@@ -18,7 +18,15 @@ RSpec.describe StatTracker do
         it "exist" do
          @stat_tracker = StatTracker.from_csv(@locations)
 
-         expect(@stat_tracker).to be(StatTracker)
+         expect(@stat_tracker).to be_a(StatTracker)
         end
+    end
+    describe "from_csv" do
+      it " returns an array of hashes" do
+       # binding.pry
+        expect(@stat_tracker.games).to be_a(CSV::Table)
+        expect(@stat_tracker.teams).to be_a(CSV::Table)
+        expect(@stat_tracker.game_teams).to be_a(CSV::Table)
+      end
     end
 end  
