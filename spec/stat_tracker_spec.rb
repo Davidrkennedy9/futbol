@@ -28,5 +28,12 @@ RSpec.describe StatTracker do
         expect(@stat_tracker.teams).to be_a(CSV::Table)
         expect(@stat_tracker.game_teams).to be_a(CSV::Table)
       end
+
+      it 'loads data from CVS files' do
+          # binding.pry
+        expect(@stat_tracker.games.count).to be > 0
+        expect(@stat_tracker.teams.count).to be > 0
+        expect(@stat_tracker.game_teams.count).to be > 0
+      end
     end
 end  
