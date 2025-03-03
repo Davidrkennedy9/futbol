@@ -124,7 +124,7 @@ RSpec.describe StatTracker do
         end.uniq
         expect(@stat_tracker.average_goals_by_season.keys.sort).to eq(seasons_data.sort)
 
-        @stat_tracker.average_goals_by_season.each do |average|
+        @stat_tracker.average_goals_by_season.each do |season, average|
           expect(average).to be > 0
         end
       end
