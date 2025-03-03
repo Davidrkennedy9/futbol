@@ -129,4 +129,21 @@ RSpec.describe StatTracker do
         end
       end
     end
+
+    describe 'League Stats' do
+      describe '#count_of_teams' do
+          it 'can count the number of teams' do
+            expect(@stat_tracker.count_of_teams).to be > 0
+          end
+
+          it 'returns the right amount of teams' do
+            expect(@stat_tracker.count_of_teams).to eq(32)
+          end
+
+          it 'returns an integer' do
+            expect(@stat_tracker.count_of_teams).to be_an(Integer)
+          end
+      end
+    end
+  end
 end  
