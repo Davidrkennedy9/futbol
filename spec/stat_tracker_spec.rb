@@ -1,7 +1,7 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe StatTracker do
-    before :each do
+  before :each do
      @game_path = './data/games.csv'
      @team_path = './data/teams.csv'
      @game_teams_path = './data/game_teams.csv'
@@ -13,17 +13,17 @@ RSpec.describe StatTracker do
      }
 
      @stat_tracker = StatTracker.from_csv(@locations)
-    end
+  end
     describe "initialize" do
-        it "exist" do
-         @stat_tracker = StatTracker.from_csv(@locations)
+      it "exist" do
+        @stat_tracker = StatTracker.from_csv(@locations)
 
-         expect(@stat_tracker).to be_a(StatTracker)
-        end
+        expect(@stat_tracker).to be_a(StatTracker)
+      end
     end
     describe "from_csv" do
       it " returns an array of hashes" do
-       # binding.pry
+      #  binding.pry
         expect(@stat_tracker.games).to be_an(Array)
         expect(@stat_tracker.teams).to be_an(Array)
         expect(@stat_tracker.game_teams).to be_an(Array)
@@ -96,22 +96,37 @@ RSpec.describe StatTracker do
         expect(@stat_tracker.game_teams.first[:hoa]).not_to be_nil
 
 
-      expect(@stat_tracker.game_teams.first[:game_id]).to eq(2012030221)
-      expect(@stat_tracker.game_teams.first[:team_id]).to eq(3)
-      expect(@stat_tracker.game_teams.first[:hoa]).to eq("away")
-      expect(@stat_tracker.game_teams.first[:result]).to eq("LOSS")
-      expect(@stat_tracker.game_teams.first[:settled_in]).to eq("OT")
-      expect(@stat_tracker.game_teams.first[:head_coach]).to eq("John Tortorella")
-      expect(@stat_tracker.game_teams.first[:goals]).to eq(2)
-      expect(@stat_tracker.game_teams.first[:shots]).to eq(8)
-      expect(@stat_tracker.game_teams.first[:tackles]).to eq(44)
-      expect(@stat_tracker.game_teams.first[:pim]).to eq(8)
-      expect(@stat_tracker.game_teams.first[:powerplayopportunities]).to eq(3)
-      expect(@stat_tracker.game_teams.first[:powerplaygoals]).to eq(0)
-      expect(@stat_tracker.game_teams.first[:faceoffwinpercentage]).to eq(44.8)
-      expect(@stat_tracker.game_teams.first[:giveaways]).to eq(17)
-      expect(@stat_tracker.game_teams.first[:takeaways]).to eq(7)
+        expect(@stat_tracker.game_teams.first[:game_id]).to eq(2012030221)
+        expect(@stat_tracker.game_teams.first[:team_id]).to eq(3)
+        expect(@stat_tracker.game_teams.first[:hoa]).to eq("away")
+        expect(@stat_tracker.game_teams.first[:result]).to eq("LOSS")
+        expect(@stat_tracker.game_teams.first[:settled_in]).to eq("OT")
+        expect(@stat_tracker.game_teams.first[:head_coach]).to eq("John Tortorella")
+        expect(@stat_tracker.game_teams.first[:goals]).to eq(2)
+        expect(@stat_tracker.game_teams.first[:shots]).to eq(8)
+        expect(@stat_tracker.game_teams.first[:tackles]).to eq(44)
+        expect(@stat_tracker.game_teams.first[:pim]).to eq(8)
+        expect(@stat_tracker.game_teams.first[:powerplayopportunities]).to eq(3)
+        expect(@stat_tracker.game_teams.first[:powerplaygoals]).to eq(0)
+        expect(@stat_tracker.game_teams.first[:faceoffwinpercentage]).to eq(44.8)
+        expect(@stat_tracker.game_teams.first[:giveaways]).to eq(17)
+        expect(@stat_tracker.game_teams.first[:takeaways]).to eq(7)
+      end
+    end
+    describe '#average_goals_by_season' do
+      it 'returns a hash with seasons as keys and average goals per game as the value' do
+        expect(@stat_tracker.average_goals_by_season).to be_a(Hash)
+        expect(@stat_tracker.average_goals_by_season.keys.all?{|key| key.is_a?(String)}).to be(true)
+        expect(@stat_tracker.average_goals_by_season.values.all?{|value| value.is_a?(Float)}).to be(true)
 
+        seasons_data = @stat_tracker.games.map do |game| 
+          game[:season].unig
+        end
+        expect(@stat_tracker.average_goals_by_season.keys.sort).to eq(seasons_data)
+
+        @stat_tracker.average_goals_by_season.each do |average|
+          expect(average).to be > 0
+        end
       end
     end
 end  

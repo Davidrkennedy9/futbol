@@ -57,4 +57,12 @@ class StatTracker
         
         new(games, teams, game_teams)
     end
+
+    def average_goals_by_season
+        # binding.pry
+        games_by_season = @games.group_by do |game| 
+            game[:season]
+        end
+       
+    end
 end

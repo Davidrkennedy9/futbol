@@ -1,6 +1,6 @@
-require "./lib/stat_tracker"
-require "pry"
+require './lib/stat_tracker'
+require 'pry'
 require 'CSV'
-require "simplecov"
+require 'simplecov'
 SimpleCov.start
 
