@@ -63,6 +63,16 @@ class StatTracker
         games_by_season = @games.group_by do |game| 
             game[:season]
         end
+
+        season_stats = games_by_season.transform_values do |games|
+            total_goals = games.sum do |game|
+                (game[:home_goals] || 0) + (game[:away] || 0)
+            end
+            num_games = games.count
+            average_goals = (total_goals/num_games.to_f).round(2)
+
+            # {average_goals: average_goals}
+        end
        
     end
 end

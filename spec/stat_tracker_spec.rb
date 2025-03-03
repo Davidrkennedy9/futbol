@@ -120,8 +120,8 @@ RSpec.describe StatTracker do
         expect(@stat_tracker.average_goals_by_season.values.all?{|value| value.is_a?(Float)}).to be(true)
 
         seasons_data = @stat_tracker.games.map do |game| 
-          game[:season].unig
-        end
+          game[:season]
+        end.uniq
         expect(@stat_tracker.average_goals_by_season.keys.sort).to eq(seasons_data)
 
         @stat_tracker.average_goals_by_season.each do |average|
