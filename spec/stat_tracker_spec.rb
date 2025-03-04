@@ -157,14 +157,10 @@ RSpec.describe StatTracker do
           end
       end
 
-      xdescribe '#best_offense' do
+      describe '#best_offense' do
         it 'retruns a string of the best offensive team'  do
           expect(@stat_tracker.best_offense).to be_an(String)
-          expect(@stat_tracker.best_offense).to eq "Reign FC"
-        end
-
-        it 'identifies correctly the team with the highest average goals' do
-
+          expect(@stat_tracker.best_offense).to eq ("Reign FC")
         end
       end
     end
