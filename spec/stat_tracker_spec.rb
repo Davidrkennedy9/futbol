@@ -123,5 +123,10 @@ RSpec.describe StatTracker do
       it "has a lowest total score" do
         expect(@stat_tracker.lowest_total_score).to eq(0)
       end
+
+      it "can see percentage of home wins" do
+        expect(@stat_tracker.percentage_home_wins).to eq(0.44)
+      end
+
     end
 end  

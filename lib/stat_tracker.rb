@@ -74,6 +74,7 @@ class StatTracker
            score << score_tracker
         end
         score.min
-        
     end
+
+   
 end
