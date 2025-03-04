@@ -57,17 +57,22 @@ class StatTracker
   end
 
   def average_goals_by_season
-    binding.pry
+    # binding.pry
     games_by_season = @games.group_by do |game| 
       game[:season]
-  end
+    end
 
     season_stats = games_by_season.transform_values do |games|
       total_goals = games.sum do |game|
-        (game[:home_goals] || 0) + (game[:away] || 0)
+        (game[:home_goals] || 0) + (game[:away_goals] || 0)
       end
         num_games = games.count
         average_goals = (total_goals/num_games.to_f).round(2)
+    end
+  end
+
+    def count_of_teams
+        @teams.count
     end
   end
 
