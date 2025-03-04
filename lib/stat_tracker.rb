@@ -57,6 +57,7 @@ class StatTracker
         
         new(games, teams, game_teams)
     end
+
     def highest_total_score
         score = []
         @games.each do |game|
@@ -64,5 +65,15 @@ class StatTracker
            score << score_tracker
         end
         score.max 
+    end
+
+    def lowest_total_score
+        score = []
+        @games.each do |game|
+           score_tracker = game[:away_goals] + game[:home_goals]
+           score << score_tracker
+        end
+        score.min
+        
     end
 end
