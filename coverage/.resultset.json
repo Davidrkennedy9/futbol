@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/davidkennedy/turing_work/1mod/Group_project/futbol/spec/games_spec.rb": {
+      "/Users/maiabard/turing_work/1mod/projects/futbol/spec/games_spec.rb": {
         "lines": [
           1,
           null,
@@ -44,14 +44,102 @@
           null
         ]
       },
-      "/Users/davidkennedy/turing_work/1mod/Group_project/futbol/spec/stat_tracker_spec.rb": {
+      "/Users/maiabard/turing_work/1mod/projects/futbol/spec/league_statistics_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          5,
+          5,
+          5,
+          null,
+          null,
+          5,
+          null,
+          null,
+          null,
+          null,
+          5,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/maiabard/turing_work/1mod/projects/futbol/spec/stat_tracker_spec.rb": {
         "lines": [
           1,
           null,
           1,
-          null,
           1,
-          null,
           2,
           2,
           2,
@@ -64,17 +152,11 @@
           null,
           2,
           null,
-          null,
-          null,
+          1,
+          1,
           1,
           null,
           1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
           null,
           null,
           null,
@@ -96,7 +178,7 @@
           null
         ]
       },
-      "/Users/davidkennedy/turing_work/1mod/Group_project/futbol/spec/teams_spec.rb": {
+      "/Users/maiabard/turing_work/1mod/projects/futbol/spec/teams_spec.rb": {
         "lines": [
           1,
           null,
@@ -136,10 +218,6 @@
         ]
       }
     },
-<<<<<<< HEAD
-    "timestamp": 1741134802
-=======
-    "timestamp": 1741147269
->>>>>>> e0cc89a2bc4cf842055a51b023775a2e89e39e31
+    "timestamp": 1741279202
   }
 }
