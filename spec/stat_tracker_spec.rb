@@ -45,4 +45,10 @@ RSpec.describe StatTracker do
 
       end
     end  
+    describe "game statistics" do 
+      it "#highest_total_score" do
+      @stat_tracker.highest_total_score
+      end
+      
+    end
 end  
