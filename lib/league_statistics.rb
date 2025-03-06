@@ -60,6 +60,49 @@ module LeagueStatistics
       end
       team.teamname
     end
+
+    def highest_scoring_visitor
+      away_team_goals = Hash.new do |hash, key| 
+        hash[key] = { total_goals: 0, games_played: 0 }
+      end
+
+      @game_teams.each do |game_team|
+        if game_team.hoa == "away"
+          away_team_goals[game_team.team_id][:total_goals] += game_team.goals
+          away_team_goals[game_team.team_id][:games_played] += 1
+        end
+      end
+
+      best_away_team_id = away_team_goals.max_by do |team_id, stats| 
+        stats[:total_goals] / stats[:games_played].to_f
+      end.first
+
+      team = @teams.find do |team| 
+        team.team_id == best_away_team_id 
+      end
+      team.teamname
+    end
   
+    def highest_scoring_home_team
+      home_team_goals = Hash.new do |hash, key| 
+        hash[key] = { total_goals: 0, games_played: 0 }
+      end
+
+      @game_teams.each do |game_team|
+        if game_team.hoa == "home"
+          home_team_goals[game_team.team_id][:total_goals] += game_team.goals
+          home_team_goals[game_team.team_id][:games_played] += 1
+        end
+      end
+
+      best_home_team_id = home_team_goals.max_by do |team_id, stats| 
+        stats[:total_goals] / stats[:games_played].to_f
+      end.first
+
+      team = @teams.find do |team| 
+        team.team_id == best_home_team_id 
+      end
+      team.teamname
+    end
   
 end

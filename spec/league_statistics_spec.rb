@@ -46,16 +46,30 @@ RSpec.describe LeagueStatistics do
       describe '#worst_offense' do
         it 'retruns a string of the worst offensive team'  do
           expect(@stat_tracker.worst_offense).to be_an(String)
-          expect(@stat_tracker.worst_offense).to eq "Utah Royals FC"
+          expect(@stat_tracker.worst_offense).to eq ("Utah Royals FC")
         end
       end
 
       describe '#highest_scoring_visitor' do
-        it 'retruns a string of the worst offensive team'  do
+        it 'retruns a string of the highest away team goal average'  do
           expect(@stat_tracker.highest_scoring_visitor).to be_an(String)
-          expect(@stat_tracker.highest_scoring_visitor).to eq "FC Dallas"
+          expect(@stat_tracker.highest_scoring_visitor).to eq ("FC Dallas")
         end
       end
+
+      describe '#highest_scoring_home_team' do
+        it 'retruns a string of the highest home team goal average'  do
+          expect(@stat_tracker.highest_scoring_visitor).to be_an(String)
+          expect(@stat_tracker.highest_scoring_home_team).to eq ("Reign FC")
+        end
+      end
+
+      describe '#lowest_scoring_visitor' do
+      it 'retruns a string of the highest away team goal average'  do
+        expect(@stat_tracker.highest_scoring_visitor).to be_an(String)
+        expect(@stat_tracker.highest_scoring_visitor).to eq ("FC Dallas")
+      end
+    end
     end
 end
 
