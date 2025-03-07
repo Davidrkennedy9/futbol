@@ -256,6 +256,43 @@ module SeasonStatistics
     # rreturn the team name
     team_with_fewest_tackles
   end
+
+  def lowest_scoring_home_team
+    # crate a hash to store total home goals and home game counts for each team
+    home_goals_by_team = Hash.new { |hash, key| hash[key] = { total_goals: 0, games_played: 0 } }
+  
+    # loop through @games to collect home team scores
+    @games.each do |game|
+    team_id = game.home_team_id 
+    goals = game.home_goals.to_i 
+  
+    # sdd the goals and increment game count for the home team
+    home_goals_by_team[team_id][:total_goals] += goals
+    home_goals_by_team[team_id][:games_played] += 1
+    end
+  
+    #scalculate average home goals per game for each team
+    average_home_scores = {}
+    home_goals_by_team.each do |team_id, data|
+      average_home_scores[team_id] = data[:total_goals].to_f / data[:games_played]
+    end
+  
+    # find the team with the lowest average home score
+    lowest_scoring_team = average_home_scores.min_by do |team_id, avg_score|
+      avg_score  # sorting by the lowest average score
+    end
+  
+    # extract the team ID from the result
+    lowest_scoring_team_id = lowest_scoring_team[0]
+  
+    # find the team name using the correct attribute
+    lowest_scoring_team = @teams.find do |team|
+       team.team_id == lowest_scoring_team_id 
+    end
+  
+    # return the team name
+    lowest_scoring_team.teamname #ensure you use the correct attribute name
+  end
 end
 
  
