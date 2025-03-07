@@ -3,7 +3,8 @@ require "spec_helper"
 RSpec.describe StatTracker do
 
      before :each do
-
+     #each key (:games, :teams, :game_teams) represents a category of data.
+     #Each value is the file path for the corresponding CSV file.
      @game_path = './data/games.csv'
      @team_path = './data/teams.csv'
      @game_teams_path = './data/game_teams.csv'
