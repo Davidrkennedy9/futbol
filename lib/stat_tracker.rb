@@ -4,12 +4,13 @@ require_relative 'game'
 require_relative 'team'
 require_relative 'game_team'
 require_relative "game_statistics"
+require_relative 'season_statistics'
 
 class StatTracker
   attr_reader :games, :teams, :game_teams
     include LeagueStatistics
     include GameStatistics
-
+    include SeasonStatistics
 
   def initialize(games, teams, game_teams)
     @games = games
@@ -22,7 +23,7 @@ class StatTracker
     games = CSV.read(locations[:games], headers: true, header_converters: :symbol).map do |row|
       Game.new(row)   
     end
-
+    
     teams = CSV.read(locations[:teams], headers: true, header_converters: :symbol).map do |row|
       Team.new(row) 
     end
@@ -31,6 +32,7 @@ class StatTracker
       GameTeam.new(row)
     end
         
+
     new(games, teams, game_teams)
     end 
 end
