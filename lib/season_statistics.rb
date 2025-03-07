@@ -61,5 +61,42 @@ module SeasonStatistics
     # return only the coach's name, or nil if no coach is found
     worst_coach&.first
   end
+
+  def most_accurate_team(season_id)
+    # get all games for the given season
+    season_games = @games.select { |game| game.season == season_id }
+  
+    # extract game IDs for this season
+    season_game_ids = season_games.map { |game| game.game_id }
+  
+    # get all teams that played in those games
+    season_game_teams = @game_teams.select { |game_team| season_game_ids.include?(game_team.game_id) }
+  
+    # create a hash to track total goals and shots for each team
+    team_stats = Hash.new { |hash, key| hash[key] = { goals: 0, shots: 0 } }
+  
+    # count total goals and shots for each team
+    season_game_teams.each do |game_team|
+      team_id = game_team.team_id
+      team_stats[team_id][:goals] += game_team.goals.to_i
+      team_stats[team_id][:shots] += game_team.shots.to_i
+    end
+  
+    # find the team with the highest shot accuracy
+    best_team = team_stats.max_by { |team_id, stats| stats[:goals].to_f / stats[:shots] }
+  
+    #if best_team exists, extract the team_id; otherwise, return nil
+    most_accurate_team_id = best_team ? best_team[0] : nil
+  
+    # find the correct team name from @teams
+    team = @teams.find { |team| team.team_id == most_accurate_team_id }
+    
+    # return teamname if team exists, otherwise return nil
+    if team
+      team.teamname
+    else
+      nil
+    end
+  end
 end
 
