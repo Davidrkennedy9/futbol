@@ -214,5 +214,48 @@ module SeasonStatistics
     team_with_most_tackles
   end
 
+  def fewest_tackles(season_id)
+    #get game ids for the given season
+    game_ids_for_season = []
+    
+    @games.each do |game|
+      if game.season == season_id  
+        game_ids_for_season << game.game_id 
+      end
+    end
+  
+    # create a hash to store total tackles for each team
+    tackles_by_team = Hash.new(0)
+  
+    # loop through game_teams and sum tackles for each team in the season
+    @game_teams.each do |game_team|
+      if game_ids_for_season.include?(game_team.game_id) 
+        team_id = game_team.team_id 
+        tackles = game_team.tackles.to_i 
+        tackles_by_team[team_id] += tackles
+      end
+    end
+  
+    # fnd the team with the fewest tackles
+    fewest_tackles_team = tackles_by_team.min_by do |team_id, tackles|
+      tackles  # sorting by the number of tackles
+    end
+    
+    # extract the team ID from the result
+    fewest_tackles_team_id = fewest_tackles_team[0]
+  
+    # fnd the team name using the correct attribute
+    team_with_fewest_tackles = nil
+    @teams.each do |team|
+      if team.team_id == fewest_tackles_team_id #
+        team_with_fewest_tackles = team.teamname #
+        break # Stop searching once we find the correct team
+      end
+    end
+  
+    # rreturn the team name
+    team_with_fewest_tackles
+  end
+end
 
  
