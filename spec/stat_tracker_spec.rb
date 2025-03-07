@@ -1,9 +1,7 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe StatTracker do
-
-     before :each do
-
+  before :each do
      @game_path = './data/games.csv'
      @team_path = './data/teams.csv'
      @game_teams_path = './data/game_teams.csv'
@@ -15,19 +13,13 @@ RSpec.describe StatTracker do
      }
 
      @stat_tracker = StatTracker.from_csv(@locations)
-
-    end
-
+  end
     describe "initialize" do
+      it "exist" do
+        @stat_tracker = StatTracker.from_csv(@locations)
 
-        it "exist" do
-
-         @stat_tracker = StatTracker.from_csv(@locations)
-
-         expect(@stat_tracker).to be_a(StatTracker)
-
-        end
-
+        expect(@stat_tracker).to be_a(StatTracker)
+      end
     end
 
     describe "from_csv" do
@@ -45,6 +37,7 @@ RSpec.describe StatTracker do
 
       end
     end  
+  
     describe "game statistics" do 
       it "#highest_total_score" do
         expect(@stat_tracker.highest_total_score).to eq(11)
