@@ -104,5 +104,41 @@ module LeagueStatistics
       end
       team.teamname
     end
-  
+
+    def lowest_scoring_visitor
+      away_team_goals = Hash.new do |hash, key| 
+        hash[key] = { total_goals: 0, games_played: 0 }
+      end
+
+      @game_teams.each do |game_team|
+        if game_team.hoa == "away"
+          away_team_goals[game_team.team_id][:total_goals] += game_team.goals
+          away_team_goals[game_team.team_id][:games_played] += 1
+        end
+      end
+
+      worst_away_team_id = away_team_goals.min_by do |team_id, stats| 
+        stats[:total_goals] / stats[:games_played].to_f
+      end.first
+
+      team = @teams.find do |team| 
+        team.team_id == worst_away_team_id 
+      end
+      team.teamname
+    end
+
+    def average_goals_by_season
+      season_goals = Hash.new do |hash, key| 
+        hash[key] = { total_goals: 0, games_played: 0 }
+      end
+
+      @games.each do |game|
+        season_goals[game.season][:total_goals] += game.away_goals + game.home_goals
+        season_goals[game.season][:games_played] += 1
+      end
+
+      season_goals.transform_values do |stats|
+        (stats[:total_goals] / stats[:games_played].to_f).round(2)
+      end
+    end
 end
