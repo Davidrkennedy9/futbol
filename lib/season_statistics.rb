@@ -98,5 +98,43 @@ module SeasonStatistics
       nil
     end
   end
+
+  def least_accurate_team(season_id)
+    # get all games for the given season
+    season_games = @games.select { |game| game.season == season_id }
+  
+    #extract game IDs for this season
+    season_game_ids = season_games.map { |game| game.game_id }
+  
+    # get all teams that played in those gams
+    season_game_teams = @game_teams.select { |game_team| season_game_ids.include?(game_team.game_id) }
+  
+    # create a hash to track total goals and shots for each team
+    team_stats = Hash.new { |hash, key| hash[key] = { goals: 0, shots: 0 } }
+  
+    # count total gols and shots for each team
+    season_game_teams.each do |game_team|
+      team_id = game_team.team_id
+      team_stats[team_id][:goals] += game_team.goals.to_i
+      team_stats[team_id][:shots] += game_team.shots.to_i
+    end
+  
+    # find the team with the lowest shot accuracy
+    worst_team = team_stats.min_by { |team_id, stats| stats[:goals].to_f / stats[:shots] }
+  
+    # if worst_team existts, extract the team_id; otherwise, return nil
+    least_accurate_team_id = worst_team ? worst_team[0] : nil
+  
+    # find and return the correct team name from @teams
+    team = @teams.find { |team| team.team_id == least_accurate_team_id }
+    
+    # return teamname if team exists, otherwise return nil
+    if team
+      team.teamname
+    else
+      nil
+    end
+  end
+  
 end
 
