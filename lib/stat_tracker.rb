@@ -19,7 +19,6 @@ class StatTracker
   end
 
   def self.from_csv(locations)
-
     games = CSV.read(locations[:games], headers: true, header_converters: :symbol).map do |row|
       Game.new(row)   
     end
@@ -31,8 +30,6 @@ class StatTracker
     game_teams = CSV.read(locations[:game_teams], headers: true, header_converters: :symbol).map do |row|
       GameTeam.new(row)
     end
-        
-
     new(games, teams, game_teams)
-    end 
+  end 
 end

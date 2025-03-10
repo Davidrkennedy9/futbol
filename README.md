@@ -18,9 +18,14 @@ We all discussed about GitHub Projects or Trello. We wanted to be exposed to a d
 
 A 2-3 sentence summary describing your approach to the code design.
 
+We worked together on main branch then divided the task evenly and check eachothers code.
+We then planned going over the code and refactoring it.
+
 Include link to your initial DTR document and the date it was completed. If you do additional DTRs later in the project, you should link the revised versions here as well with the date. New versions should be listed alongside older versions. Do not delete old DTRs.
 
 DTR 2/28 - https://docs.google.com/document/d/1FxyFAKkOm6dIJ9jmknTRxyGL_0g6MMfm7rfxDFo1AeQ/edit?tab=t.0
+
+DTR 3/7 https://docs.google.com/document/d/1Bk1us5My4Zn9NUu2FiQneSWtylYnl1y2vkjgDhGEmOs/edit?tab=t.0
 
 Create a section in your README called “Contributors”. List each group member’s name and link to their LinkedIn and Github profiles.
 
@@ -37,3 +42,18 @@ Linkedin: https://www.linkedin.com/in/david-kennedy-3abba9353/
 Maia -
 GitHub: https://github.com/MaiaKBard
 Linkedin: https://www.linkedin.com/in/maia-bard-065b75353/
+
+## Retro
+The name of and links (if applicable) to any tools you used for retro
+
+Mural - https://app.mural.co/t/turingretrogroupproject2591/m/turingretrogroupproject2591/1741453128636/511e89064f261f83b643d8047baf02e2a6ffa120
+
+Top 3 things that went well during your project
+- Good communication 
+- Reaching out for help
+- solving our problems in a timely manner
+
+Top 3 things your team would do differently next time
+- Work together more on technical tasks
+- Leveraging eachothers skills 
+- Leave more feedback on pull request
