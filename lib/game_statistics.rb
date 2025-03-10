@@ -1,5 +1,4 @@
 module GameStatistics
-
   def highest_total_score
     score = []
     @games.each do |game|
