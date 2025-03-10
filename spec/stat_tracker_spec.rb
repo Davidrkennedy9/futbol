@@ -144,7 +144,7 @@ RSpec.describe StatTracker do
     end
   end
 
-  describe 'Season Statistics'
+  describe 'Season Statistics' do
     it "#winningest_coach" do
       expect(@stat_tracker.winningest_coach("20132014")).to eq "Claude Julien"
       expect(@stat_tracker.winningest_coach("20142015")).to eq "Alain Vigneault"
